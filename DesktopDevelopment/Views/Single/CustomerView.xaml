@@ -1,0 +1,152 @@
+﻿<local:BaseSingleView
+
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+
+             xmlns:local="clr-namespace:DesktopDevelopment.Views.Single"
+
+             xmlns:Single="clr-namespace:DesktopDevelopment.ViewModels.Single" x:Class="DesktopDevelopment.Views.Single.CustomerView"
+
+             mc:Ignorable="d" 
+
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <d:UserControl.DataContext>
+
+        <Single:CustomerViewModel/>
+
+    </d:UserControl.DataContext>
+
+
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition  Width="150"/>
+
+                    <ColumnDefinition/>
+
+                    <ColumnDefinition  Width="150"/>
+
+                    <ColumnDefinition/>
+
+                    <ColumnDefinition  Width="150"/>
+
+                    <ColumnDefinition/>
+
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="auto"/>
+
+                    <RowDefinition Height="auto"/>
+
+                    <RowDefinition Height="auto"/>
+
+                    <RowDefinition/>
+
+                </Grid.RowDefinitions>
+
+                <TextBlock  Grid.Column="0"  Grid.Row="0"  Text="Code" Margin="2"/>
+
+                <TextBox  Grid.Column="1"  Grid.Row="0" Margin="2" Text="{Binding Code, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}"/>
+
+                <TextBlock  Grid.Column="2"  Grid.Row="0"  Text="NIP" Margin="2"/>
+
+        <TextBox  Grid.Column="3"  Grid.Row="0" Margin="2" Text="{Binding Nip, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <TextBlock  Grid.Column="4"  Grid.Row="0"  Text="Title" Margin="2"/>
+
+        <TextBox  Grid.Column="5"  Grid.Row="0" Margin="2" Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <TextBlock  Grid.Column="0"  Grid.Row="1"  Text="Status" Margin="2"/>
+
+        <ComboBox  Grid.Column="1"  Grid.Row="1" Margin="2" ItemsSource="{Binding CustomerStatuses}" DisplayMemberPath="Title" SelectedValuePath="Id" SelectedValue="{Binding CustomerStatusId, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}"/>
+
+                <TextBlock  Grid.Column="2"  Grid.Row="1"  Text="Category" Margin="2"/>
+
+        <ComboBox  Grid.Column="3"  Grid.Row="1" Margin="2" ItemsSource="{Binding CustomerCategories}" DisplayMemberPath="Title" SelectedValuePath="Id" SelectedValue="{Binding CustomerCategoryId,ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}"/>
+
+                <GroupBox Grid.Row="2" Grid.ColumnSpan="6" Header="Address">
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition  Width="150"/>
+
+                            <ColumnDefinition/>
+
+                            <ColumnDefinition  Width="150"/>
+
+                            <ColumnDefinition/>
+
+                            <ColumnDefinition  Width="150"/>
+
+                            <ColumnDefinition/>
+
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+
+                            <RowDefinition Height="auto"/>
+
+                            <RowDefinition Height="auto"/>
+
+                            <RowDefinition Height="auto"/>
+
+                        </Grid.RowDefinitions>
+
+                        <TextBlock  Grid.Column="0"  Grid.Row="0"  Text="Street" Margin="2"/>
+
+                <TextBox  Grid.Column="1"  Grid.Row="0" Margin="2" Text="{Binding Street, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBlock  Grid.Column="2"  Grid.Row="0"  Text="House number" Margin="2"/>
+
+                <TextBox  Grid.Column="3"  Grid.Row="0" Margin="2" Text="{Binding HouseNumber, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBlock  Grid.Column="4"  Grid.Row="0"  Text="Flat number" Margin="2"/>
+
+                <TextBox  Grid.Column="5"  Grid.Row="0" Margin="2" Text="{Binding FlatNumber, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBlock  Grid.Column="0"  Grid.Row="1"  Text="Postal code" Margin="2"/>
+
+                <TextBox  Grid.Column="1"  Grid.Row="1" Margin="2" Text="{Binding PostalCode, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBlock  Grid.Column="2"  Grid.Row="1"  Text="Postal city" Margin="2"/>
+
+                <TextBox  Grid.Column="3"  Grid.Row="1" Margin="2" Text="{Binding PostalCity, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBlock  Grid.Column="4"  Grid.Row="1"  Text="County or region" Margin="2"/>
+
+                <TextBox  Grid.Column="5"  Grid.Row="1" Margin="2" Text="{Binding CountyOrRegion, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBlock  Grid.Column="0"  Grid.Row="2"  Text="Country" Margin="2"/>
+
+                <ComboBox  Grid.Column="1"  Grid.Row="2" Margin="2" ItemsSource="{Binding Countries, UpdateSourceTrigger=PropertyChanged}" SelectedValue="{Binding CountryId}" DisplayMemberPath="Title" SelectedValuePath="Id"/>
+
+                        <TextBlock  Grid.Column="2"  Grid.Row="2"  Text="Phone number" Margin="2"/>
+
+                <TextBox  Grid.Column="3"  Grid.Row="2" Margin="2" Text="{Binding PhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <!--
+                        to bo nie dzialalo edit takto to bez tego nie dziala toole button uzyj convertera , UpdateSourceTrigger=PropertyChanged-->
+                        <Button Grid.Column="0" Grid.Row="3" Margin="2" Content="Save" Command="{Binding SaveAndCloseCommand}"/>
+            </Grid>
+
+                </GroupBox>
+
+            </Grid>
+
+
+
+
+
+</local:BaseSingleView>

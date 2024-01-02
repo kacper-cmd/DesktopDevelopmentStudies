@@ -1,0 +1,63 @@
+﻿<local:BaseManyView
+
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+
+             xmlns:local="clr-namespace:DesktopDevelopment.Views.Many"
+
+             xmlns:Many="clr-namespace:DesktopDevelopment.ViewModels.Many" x:Class="DesktopDevelopment.Views.Many.CustomersView"
+
+             mc:Ignorable="d" 
+
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+
+        <ResourceDictionary Source="/ViewResources/Styles/TabsResources.xaml"/>
+
+    </UserControl.Resources>
+
+    <d:UserControl.DataContext>
+        <Many:CustomersViewModel/>
+    </d:UserControl.DataContext>
+
+    <StackPanel>
+
+        <!--<GroupBox Header="Filters"/>-->
+
+        <!--<ToolBar>
+
+            <Button Margin="10 0" Content="Refresh" Command="{Binding RefreshCommand}"/>
+
+            <Button Margin="10 0" Content="Delete" Command="{Binding DeleteCommand}"/>
+
+            <Button Margin="10 0" Content="Add new" Command="{Binding AddNewCommand}"/>
+
+        </ToolBar>-->
+
+        <DataGrid CanUserAddRows="False" AutoGenerateColumns="False" ItemsSource="{Binding Models}" SelectedItem="{Binding SelectedItem}">
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+
+                <DataGridTextColumn Header="Code" Binding="{Binding Code}"/>
+
+                <DataGridTextColumn Header="NIP" Binding="{Binding Nip}"/>
+
+                <DataGridTextColumn Header="Title" Binding="{Binding Title}"/>
+                
+                <DataGridTextColumn Header="Country Name" Binding="{Binding Address.Country.Title}"/>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+    </StackPanel>
+
+</local:BaseManyView>

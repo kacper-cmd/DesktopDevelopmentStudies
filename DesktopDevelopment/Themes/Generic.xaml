@@ -1,0 +1,95 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:DesktopDevelopment"
+    xmlns:viewsS="clr-namespace:DesktopDevelopment.Views.Single"
+    xmlns:viewsM="clr-namespace:DesktopDevelopment.Views.Many"
+    >
+<!--add datacontext-->
+
+    <Style TargetType="{x:Type viewsS:BaseSingleView}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type viewsS:BaseSingleView}">
+
+                    <Grid  Margin="0,10,0,0">
+
+                        <Grid.RowDefinitions>
+
+                            <RowDefinition  Height="auto"/>
+
+                            <RowDefinition  Height="*"/>
+
+                        </Grid.RowDefinitions>
+
+                        <ToolBar Grid.Row="0">
+
+                            <Button Content="Save and close" MinWidth="100" Command="{Binding SaveAndCloseCommand}" />
+
+                        </ToolBar>
+                        <Grid Grid.Row="1" Margin="0,5,0,5">
+                            <ContentPresenter/>
+                        </Grid>
+                        
+                    </Grid>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style TargetType="{x:Type viewsM:BaseManyView}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type viewsM:BaseManyView}">
+
+                    <StackPanel>
+
+                        <GroupBox Header="Filters">
+                            <UniformGrid Columns="6">
+                                <TextBlock Text="Search"/>
+                                <TextBox Text="{Binding SearchInput, UpdateSourceTrigger=PropertyChanged}"/>
+                                <TextBlock Text="Search input" />
+                                <ComboBox ItemsSource="{Binding SearchAndOrderColumns}"
+                                          SelectedValuePath="Key"
+                                          DisplayMemberPath="Value"
+                                          SelectedValue="{Binding SearchColumn}"/>
+                                <TextBlock Text="Order by" />
+                                <ComboBox ItemsSource="{Binding SearchAndOrderColumns}"
+                                           SelectedValuePath="Key"
+                                           DisplayMemberPath="Value"
+                                           SelectedValue="{Binding SortColumn}"/>
+                                <CheckBox Content="Sort descending" IsChecked="{Binding SortDescending}"/>
+
+                            </UniformGrid>
+                        </GroupBox>
+
+                        <ToolBar>
+
+                            <Button Margin="10 0" Content="Refresh Sort Search" Command="{Binding RefreshCommand}"/>
+
+                            <Button Margin="10 0" Content="Delete" Command="{Binding DeleteCommand}"/>
+
+                            <Button Margin="10 0" Content="Add new" Command="{Binding AddNewCommand}"/>
+                            <Button Margin="10 0" Content="Edit/Select" Command="{Binding SelectCommand}"/>
+
+                        </ToolBar>
+
+                        <!--<DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Models}" SelectedItem="{Binding SelectedItem}">
+
+                        </DataGrid>-->
+                        <ContentPresenter/> 
+                        <!--where we want render tutaj z customersview-->
+
+                    </StackPanel>
+                    
+
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+</ResourceDictionary>
