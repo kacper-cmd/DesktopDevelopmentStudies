@@ -128,3 +128,20 @@ namespace DesktopDevelopment.ViewModels.Single
         //ItemCollection 
     }
 }
+
+//protected void Edit (EditorMessenger<T> message)
+//Model= message.Item;
+//Refresh();
+//w constru WeakReferenceMessenger.Default.Register<EditorMessenger<T>>(this, (recipient, message) => Edit(message));
+
+//zle podejsci 
+//protected void SaveAndRefresh() if(getModelId()==0) add else edit potem wyswil do odswizenia WeakReferenceMessenger.Default.Send<RefreshMessage<T>>();
+//korzystanie z roznych contextow bazy danych 2 konstructowy beza i z parametrem contextu 
+//protected virtual int getModelId()//virtual gdzyby chcial zmienic
+//{
+//    return (int) (Model.GetType().GetProperty("Id")?.GetValue(Model)??0);
+//}
+//if Model.Id ==0 then add else edit 
+//public vuertual Resfresh(){} przy edicie methodize
+//i nadpisuje Onpropertychanged(()=>propertyname)
+//w bazowej public vuertual Resfresh(){}  gdzie jest basesingleviewmodel foreach(var item in this GetType.GetProperties()){OnPropertyChanged(item.Name)}

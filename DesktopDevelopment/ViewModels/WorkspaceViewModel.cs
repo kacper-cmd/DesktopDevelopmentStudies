@@ -1,4 +1,5 @@
 ﻿using DesktopDevelopment.Helpers;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,3 +48,12 @@ namespace DesktopDevelopment.ViewModels
 
     }
 }
+
+//private void OnWorkspaceRequestClose(object sender, EventArgs e)
+//{
+//    WorkspaceViewModel workspace = sender as WorkspaceViewModel;
+//if (workspace != null)
+//{
+//    this.Workspaces.Remove(workspace);
+//}
+//}

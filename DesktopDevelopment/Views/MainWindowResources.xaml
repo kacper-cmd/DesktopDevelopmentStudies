@@ -5,7 +5,12 @@
                     xmlns:vmm="clr-namespace:DesktopDevelopment.ViewModels.Many"
                     xmlns:vw="clr-namespace:DesktopDevelopment.Views"
                     xmlns:vws="clr-namespace:DesktopDevelopment.Views.Single"
-                    xmlns:vwm="clr-namespace:DesktopDevelopment.Views.Many">
+                    xmlns:vwm="clr-namespace:DesktopDevelopment.Views.Many"
+                     xmlns:other="clr-namespace:DesktopDevelopment.Views.Other"
+                                        xmlns:otherv="clr-namespace:DesktopDevelopment.ViewModels.Other"
+
+
+    >
 
     <DataTemplate DataType="{x:Type vm:AddressViewModel}">
         <vw:AddressView/>
@@ -19,7 +24,9 @@
     <DataTemplate DataType="{x:Type vms:InvoiceViewModel}">
         <vws:InvoiceView/>
     </DataTemplate>
-
+    <DataTemplate DataType="{x:Type otherv:ProductStatsViewModel}">
+        <other:ProductStatsView/>
+    </DataTemplate>
 
 
     <Style x:Key="MainHCCStyle" TargetType="{x:Type HeaderedContentControl}">

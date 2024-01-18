@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
 using DesktopDevelopment.Helpers;
 using DesktopDevelopment.ViewModels.Many;
+using DesktopDevelopment.ViewModels.Other;
 using DesktopDevelopment.ViewModels.Single;
 using DesktopDevelopment.ViewResources;
 using System;
@@ -37,6 +38,7 @@ namespace DesktopDevelopment.ViewModels
             OpenCustomerViewCommand = new BaseCommand(() => CreateView(new CustomerViewModel()));
             OpenCustomersViewCommand = new BaseCommand(() => CreateView(new CustomersViewModel()));
             OpenInvoiceViewCommand = new BaseCommand(() => CreateView(new InvoiceViewModel()));
+            //TabsViewCommand = new BaseCommand(() => CreateListView<TabsViewModel>());
             Commands = new(CreateCommands());
             //pass messages between classes
             WeakReferenceMessenger.Default.Register<OpenViewMessage>(this, (recipent,message) =>
@@ -64,7 +66,9 @@ namespace DesktopDevelopment.ViewModels
                 new (GlobalResources.Address, OpenAddressViewCommand),
                 new (GlobalResources.Customer, OpenCustomerViewCommand),
                 new (GlobalResources.Customers, OpenCustomersViewCommand),
-                new (GlobalResources.Invoice, OpenInvoiceViewCommand)
+                new (GlobalResources.Invoice, OpenInvoiceViewCommand),
+                new ("Stats",new BaseCommand(()=> CreateView(new ProductStatsViewModel()))),
+              //  new ("Tabs", TabsCommand),//zakldadki do hurt
             };
         }
 
